@@ -14,13 +14,18 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
   @Get()
-  async getUser() {
-    return this.userService.getUser();
+  async getUsers() {
+    return this.userService.getUsers();
   }
 
   @Post()
   async createUser(@Body() dto: UserDto) {
     return this.userService.createUser(dto);
+  }
+
+  @Get(':id')
+  async getUser(@Param('id') id: string) {
+    return this.userService.getUserById(id);
   }
 
   @Put(':id')

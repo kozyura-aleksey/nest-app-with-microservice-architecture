@@ -6,8 +6,12 @@ import { UserDto } from 'src/user.dto';
 export class UsersService {
   constructor(@Inject('users-service') private client: ClientProxy) {}
 
-  async getUser() {
-    return this.client.send('get.user', '');
+  async getUsers() {
+    return this.client.send('get.users', '');
+  }
+
+  async getUserById(id: string) {
+    return this.client.send('get.user', id);
   }
 
   async createUser(dto: UserDto) {
